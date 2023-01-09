@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Movie-Reservation-System">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../css/jquery.seat-charts.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    <title>ApnaShow</title>
+    <link rel="stylesheet" href="../css/seats.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/jquery.seat-charts.js"></script>
+    <!-- Bootstrap core CSS -->
+    
+    <style>
+     
+    </style>
+</head>
+<body>
+    
+
+
+
+<div class="container">
+      <br>
+    <br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> 
+        <form class="well form-horizontal" href="/movies/seats" method="POST"  id="contact_form">
+    <fieldset >
+    
+    <!-- Form Name -->
+   
+    <legend class="contact-title">Register here for Dhishan !</legend>
+   <div class="full-form">
+    <!-- Text input-->
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label" style="font-weight: bold;">First Name:-</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input  name="firstname" placeholder="First Name" class="form-control"  type="text" required>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    
+    <div class="form-group"method="POST" id="destion_details_form">
+      <label class="col-md-4 control-label" style="font-weight: bold;" >Last Name:-</label> 
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input name="lastname" placeholder="Last Name" class="form-control"  type="text" required>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Text input-->
+           <div class="form-group">
+      <label class="col-md-4 control-label" style="font-weight: bold;">E-Mail:-</label>  
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      <input name="emaill" placeholder="E-Mail Address" class="form-control"   type="text" required>
+        </div>
+      </div>
+
+    </div>
+     <!-- Text input-->
+           <div class="form-group">
+      <label type ="number"class="col-md-4 control-label" style="font-weight: bold;">contact Number:-</label>  
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      <input name="cont" placeholder="Contect Number" class="form-control"  type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required><br>
+      
+        </div>
+       <small>Format: 123-456-7890</small>
+      </div>
+
+    </div>
+    
+    <!-- Message input    -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" style="font-weight: bold;">Address:-</label>
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                <textarea class="form-control" name="add" placeholder="Message Description" required></textarea>
+      </div>
+      </div>
+    </div>
+ 
+   <div class="wrapper" required>
+        <div class="container">
+            <div class="row">
+                <div class="grid-50">
+                    <div id="seat-map">
+                        <div class="front-indicator">Bus Seat Reservation</div>
+                        <h4 class="text-muted fw-bold text-center" style="padding-left:3em; margin:.5em">From Front Row</h4>
+                        <div id="bus-seat-map"></div>
+                        <h4 class="text-muted fw-bold text-center" style="padding-left:3em; margin:.5em">End of Seat Row</h4>
+                    </div>
+                </div>
+                <div class="grid-50">
+                    <div class="booking-details">
+
+                        <form action="" method="post">
+
+                            <h2>Booking Details</h2>
+
+                            <h3> Selected Seats (<span id="counter">0</span>):</h3>
+                            <ul id="selected-seats"></ul>
+
+                            <h2>Total: <b>$<span id="total">0</span></b></h2>
+
+                            <button type="submit" id="checkout-button">Submit Book</button>
+
+                        </form>
+
+                        <div id="legend"></div>
+                        <button id="reset-btn" type="button">Reset Bus Seat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4">
+        <!-- <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button> -->
+        <button type="submit" href ="/movies/seats" class="btn  btn-outline-light  " style="color: black;margin-left:1rem;  background-color:#FF3F81;width: 7rem;">Submit <span class="glyphicon glyphicon-send"></span></button>
+      </div>
+    </div>
+ 
+    </fieldset>
+    </form>
+    </div>
+
+
+
+    <script src="../js/script.js"></script>
+        
+  
+         
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+        <script>
+            $(document).ready(function() {
+    $('#contact_form').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+          
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            fName: {
+                validators: {
+                        stringLength: {
+                        min: 2,
+                    },
+                        notEmpty: {
+                        message: '<p style=color:red;>Please enter your first name</p>'
+                    }
+                }
+            },
+             lName: {
+                validators: {
+                     stringLength: {
+                        min: 2,
+                    },
+                    notEmpty: {
+                        message: '<p style=color:red;>Please enter your last name</p>'
+                    }
+                }
+            },
+            eMail: {
+                validators: {
+                    notEmpty: {
+                        message: '<p style=color:red;>Please enter your email address</p>'
+                    },
+                    emailAddress: {
+                        message: '<p style=color:red;>Please enter a valid email address</p>'
+                    }
+                }
+            },
+              no: {
+                validators: {
+                     {{!-- stringLength: {
+                        min: 10,
+                        max:10,
+                    }, --}}
+                    notEmpty: {
+                        message: '<p style=color:red;>Please enter your contact number</p>'
+                    }
+                }
+            },
+          
+            
+
+            body: {
+                validators: {
+                      stringLength: {
+                        min: 5,
+                        max: 200,
+                        message:'<p style=color:red;>Please enter at least 5 characters and no more than 200</p>'
+                    },
+                    notEmpty: {
+                        message: '<p style=color:red;>Please enter a description of your feedback</p>'
+                    }
+                    }
+                }
+            }
+        })
+       
+});
+
+
+        </script>
+</body>
+</html>
